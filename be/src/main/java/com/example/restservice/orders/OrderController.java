@@ -34,23 +34,28 @@ public class OrderController {
      * @param status        The status of the order (e.g., "pending", "completed").
      * @return A message indicating whether the order was created successfully or an error occurred.
      */
+//    @PostMapping("/create")
+//    public ResponseEntity<String> createOrder(@RequestBody String email,
+//                                              @RequestBody String name,
+//                                              @RequestBody Double price,
+//                                              @RequestBody int qty) {
     @PostMapping("/create")
-    public ResponseEntity<String> createOrder(@RequestParam String email,
-                                              @RequestParam String name,
-                                              @RequestParam Double price,
-                                              @RequestParam int qty) {
+    public ResponseEntity<String> createOrder(@RequestBody Order order) {
         System.out.println("PARAM VALUES");
-        System.out.println("");
+        System.out.println(order.getEmail());
         try {
-            Order newOrder = new Order();
-            newOrder.setEmail(email);
-            newOrder.setDescription(name);
-            newOrder.setPrice(price);
-            newOrder.setStatus("Pending");
-            newOrder.setDate(LocalDateTime.now());
-            newOrder.setDeliveryDate(LocalDateTime.of(2024, 10, 11, 17, 0, 0));
-            newOrder.setQuantity(qty);
-            orderRepository.save(newOrder);
+//            Order newOrder = new Order();
+//            newOrder.setEmail(email);
+//            newOrder.setDescription(name);
+//            newOrder.setPrice(price);
+//            newOrder.setStatus("Pending");
+//            newOrder.setDate(LocalDateTime.now());
+//            newOrder.setDeliveryDate(LocalDateTime.of(2024, 10, 11, 17, 0, 0));
+//            newOrder.setQuantity(qty);
+            order.setStatus("Pending");
+            order.setDate(LocalDateTime.now());
+            order.setDeliveryDate(LocalDateTime.of(2024, 10, 11, 17, 0, 0));
+            orderRepository.save(order);
             return ResponseEntity.ok("Order created successfully!");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error creating order: " + e.getMessage());

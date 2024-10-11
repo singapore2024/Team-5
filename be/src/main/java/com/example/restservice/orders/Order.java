@@ -15,25 +15,25 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime date;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime deliveryDate;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Double price;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int quantity;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String description;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String status;
 
     // Getters and Setters
