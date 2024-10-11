@@ -30,12 +30,6 @@ export const getAllSchedules = async () => {
     return axiosInstance.get('/schedule');
 }
 
-export const createSchedule = async (userId, date, slot, type, remarks) => {
-    return axiosInstance.post('/schedule', {
-        userId,
-        date,
-        slot,
-        type,
-        remarks
-    });
+export const createSchedule = async (schedule) => {
+    return axiosInstance.post('/schedule', schedule);
 }

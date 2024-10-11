@@ -10,6 +10,8 @@ import Order from './OrderPage'
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import OrderPage from './OrderPage';
+import { orange } from '@mui/material/colors'; // Import the color
+
 
 // Navigation items for the navbar
 const NAVIGATION = [
@@ -85,11 +87,11 @@ function DashboardLayoutBasic({ children }) {
       {/* AppBar to hold the top navigation bar */}
       <AppBar
         position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1,  bgcolor: orange[800] }}
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Admin Dashboard Template
+            Fortitude Culina
           </Typography>
         </Toolbar>
       </AppBar>
