@@ -20,6 +20,7 @@ function App() {
             <Route path="/dashboard" element={<Menu />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/schedule" element={<SchedulePage />} />
             <Route path="/order" element={<OrderPage />} />
             <Route path="/order-success" element={<OrderSuccessPage />} />
             {/* Catch-all route for undefined pages */}

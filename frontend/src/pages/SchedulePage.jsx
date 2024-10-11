@@ -40,7 +40,6 @@ const Demo = () => {
     const [currentDateTime, setCurrentDateTime] = useState(new Date()); // Add state for current date and time
 
     const handleCreateSchedule = async () => {
-        console.log('Creating schedule:', newSchedule);
         const startDate = new Date(newSchedule.date);
         let endDate = new Date(startDate);
 
@@ -55,14 +54,17 @@ const Demo = () => {
         }
 
         const schedule = {
-            date: startDate.toISOString(), // Send ISO string format to backend
+            date: startDate.toLocaleDateString('en-CA'),
             remarks: newSchedule.remarks,
             type: newSchedule.type,
-            slot: newSchedule.slot, // Include the selected slot
+            slot: newSchedule.slot, 
+            userId: 1
         };
 
+        console.log('Creating schedule:', schedule);
+
         await createSchedule(schedule); // Call your API to create the schedule
-        fetchData(); // Refresh schedules after adding a new one
+        fetchData(); 
     };
 
     useEffect(() => {
@@ -84,8 +86,6 @@ const Demo = () => {
                 const schedulesWithSlot = schedulesArray.map(schedule => {
                     const startDate = new Date(schedule.date); // Start time based on schedule date
                     let endDate = new Date(startDate);
-
-                    let text = schedule.remarks;
 
                     let slot = schedule.slot;
                     // Calculate endDate based on the slot
@@ -178,7 +178,7 @@ const Demo = () => {
                     sx={{ marginRight: 1 }}
                 />
                 <TextField
-                    label="Remarks"
+                    label='Remarks'
                     value={newSchedule.remarks}
                     onChange={(e) => setNewSchedule({ ...newSchedule, remarks: e.target.value })}
                     sx={{ marginRight: 1 }}
