@@ -5,8 +5,11 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';  // For navigation
 import AdminDashboard from './AdminDashboard';
+import Menu from './Menu'
+import Order from './OrderPage'
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ScheduleIcon from '@mui/icons-material/Schedule';
+import OrderPage from './OrderPage';
 
 // Navigation items for the navbar
 const NAVIGATION = [
@@ -18,7 +21,7 @@ const NAVIGATION = [
   {
     title: 'Order',
     icon: <ShoppingCartIcon />,
-    link: '/orders',
+    link: '/order',
   },
   {
     title: 'Schedule',
@@ -48,13 +51,9 @@ function DemoPageContent({ pathname }) {
         textAlign: 'center',
       }}
     >
-      {pathname === '/dashboard' && (
-        <Typography>Dashboard content for {pathname}</Typography>
-      )}
+      {pathname === '/dashboard' && <Menu/>}
       {pathname === '/admin' && <AdminDashboard />}  {/* Admin Dashboard rendered */}
-      {pathname === '/orders' && (
-        <Typography>Orders content for {pathname}</Typography>
-      )}
+      {pathname === '/order' && <OrderPage/>}
       {pathname === '/inventory' && (
         <Typography>Inventory content for {pathname}</Typography>
       )}

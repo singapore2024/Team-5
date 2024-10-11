@@ -16,7 +16,7 @@ function App() {
         <Navbar>
           <Routes>
             {/* Define your routes here */}
-            <Route path="/" element={<Menu />} />
+            <Route path="/dashboard" element={<Menu />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/order" element={<OrderPage />} />

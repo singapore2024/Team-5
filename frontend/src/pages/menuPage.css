@@ -78,7 +78,9 @@
   }
   
   .food-image {
-    width: 100%;
+    max-width: 100%; /* Ensures the image does not exceed the container's width */
+    max-height: 200px; /* Limits the height to maintain aspect ratio */
+    object-fit: cover; /* Ensures the image fits within the specified dimensions */
     border-radius: 8px;
     margin-bottom: 10px;
   }

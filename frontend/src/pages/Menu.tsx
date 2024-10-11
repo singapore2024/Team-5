@@ -26,28 +26,28 @@ const DUMMY_FOOD_ITEMS: FoodItem[] = [
     name: "Chicken Rice",
     ingredients: ["Chicken", "Rice", "Garlic", "Ginger", "Soy Sauce"],
     image: null,
-    imagePreview: "/images/nasilemak.jpg"
+    imagePreview: "chickenrice.jpg"
   },
   {
     id: "3",
     name: "Pasta",
     ingredients: ["Pasta", "Tomato Sauce", "Parmesan", "Basil"],
     image: null,
-    imagePreview: "/images/nasilemak.jpg"
+    imagePreview: "pasta.jpg"
   },
   {
     id: "4",
     name: "Sushi",
     ingredients: ["Rice", "Seaweed", "Salmon", "Avocado"],
     image: null,
-    imagePreview: "/nasilemak.jpg"
+    imagePreview: "sushi.jpg"
   },
   {
     id: "5",
     name: "Salad",
     ingredients: ["Lettuce", "Tomato", "Cucumber", "Olives", "Feta Cheese"],
     image: null,
-    imagePreview: "/images/nasilemak.jpg"
+    imagePreview: "salad.jpg"
   },
 ];
 
@@ -121,7 +121,7 @@ const MenuPage: React.FC = () => {
             className={`food-card ${expandedItemId === food.id ? "expanded" : ""}`}
             onClick={() => handleToggleExpand(food.id)}
           >
-            <img src={food.imagePreview} alt={food.name}  />
+            <img src={food.imagePreview} alt={food.name} className="food-image"  />
             <Typography variant="h6" className="food-name">
               {food.name}
             </Typography>
