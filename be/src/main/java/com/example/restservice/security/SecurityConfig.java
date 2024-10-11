@@ -56,8 +56,7 @@ public class SecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authz -> authz
-                    .requestMatchers("/menu/all", "/auth/register", "/auth/login", "/auth/test","/file/upload", "/file/retrieve").permitAll()
-                    .anyRequest().authenticated()
+                    .anyRequest().permitAll()
             )
             .oauth2ResourceServer(oauth2 -> oauth2
                     .jwt(jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(new JwtAuthenticationConverter()))
