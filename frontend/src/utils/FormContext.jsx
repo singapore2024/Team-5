@@ -8,7 +8,7 @@ export const useFormContext = () => useContext(FormContext);
 
 export const FormProvider = ({ children }) => {
   const [formData, setFormData] = useState({
-    name: "",
+    description: "",
     email: "",
     price: "",
     deliveryDateTime: "",
