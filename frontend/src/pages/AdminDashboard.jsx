@@ -12,6 +12,7 @@ const AdminDashboard = () => {
   const [inventory, setInventory] = useState([]);
   const [view, setView] = useState('orders');  // State to toggle between 'orders' and 'inventory'
   const [status, setStatus] = useState([]);
+  const [ord, setOrd] = useState([]); 
 
   useEffect(() => {
     const fetchInventoryData = async () => {
@@ -31,12 +32,23 @@ const AdminDashboard = () => {
   }, []);
 
   useEffect(() => {
+    const fetchOrderData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/orders/testGet'); 
+        console.log(response.data);
+        setOrd(response.data);
+      } catch (err) {
+        console.error('Error fetching inventory data:', err);
+      }
+    };
+    fetchOrderData();
     // Mock orders data
-    const mockOrders = [
-      { id: 1, customer: "Alice", status: "Pending", items: 3, orderDate: "xx" },
-      { id: 2, customer: "Bob", status: "Fulfilled", items: 5, orderDate: "xx" },
-      { id: 3, customer: "Charlie", status: "Cancelled", items: 2, orderDate: "xx" }
-    ];
+    const mockOrders = ord;
+    // [
+    //   { id: 1, customer: "Alice", status: "Pending", items: 3, orderDate: "xx" },
+    //   { id: 2, customer: "Bob", status: "Fulfilled", items: 5, orderDate: "xx" },
+    //   { id: 3, customer: "Charlie", status: "Cancelled", items: 2, orderDate: "xx" }
+    // ];
 
     // Mock inventory data
     const mockInventory = [
@@ -132,18 +144,18 @@ const OrdersTable = ({ orders }) => {
           {orders.map((order) => (
             <TableRow key={order.id}>
               <TableCell>{order.id}</TableCell>
-              <TableCell>{order.customer}</TableCell>
+              <TableCell>{order.email}</TableCell>
               {/* Apply dynamic color to the status cell */}
               <TableCell sx={{ color: getStatusColor(order.status), fontWeight: 'bold' }}>
                 <select>
+                <option value="Pending">Pending</option>
                 <option value="Fulfilled">Fulfilled</option>
                 <option value="Cancelled">Cancelled</option>
-                <option value="Pending">Pending</option>
                 </select>
                 {/* {order.status} */}
               </TableCell>
-              <TableCell>{order.items}</TableCell>
-              <TableCell>{order.orderDate}</TableCell>
+              <TableCell>{order.description}</TableCell>
+              <TableCell>{order.deliveryDate}</TableCell>
             </TableRow>
           ))}
         </TableBody>
