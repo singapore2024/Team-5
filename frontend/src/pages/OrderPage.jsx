@@ -70,7 +70,7 @@ export default function OrderPage() {
               <input
                 type="text"
                 required="required"
-                placeholder="Please enter the exact food name here"
+                placeholder="Please enter your email"
                 value={formData.email}
                 onChange={(e) => updateFormData("email", e.target.value)}
               />
@@ -80,8 +80,8 @@ export default function OrderPage() {
             <div className="justify-between">
               <label>Food Item</label>
               <select
-                value={formData.name}
-                onChange={(e) => updateFormData("name", e.target.value)}
+                value={formData.description}
+                onChange={(e) => updateFormData("description", e.target.value)}
                 required="required"
               >
                 <option value="" disabled>
@@ -101,9 +101,9 @@ export default function OrderPage() {
                   <input
                     type="number"
                     required="required"
-                    value={formData.qty}
+                    value={formData.quantity}
                     onChange={(e) =>
-                      updateFormData("qty", e.target.value)
+                      updateFormData("quantity", e.target.value)
                     }
                   />
                 </label>

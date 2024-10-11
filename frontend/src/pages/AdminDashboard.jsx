@@ -4,12 +4,29 @@ import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper,
   Typography, Select, MenuItem, FormControl
 } from '@mui/material';  // Import MUI components
+import axios from "axios";
 
 // AdminDashboard Component with Dropdown to select Orders or Inventory
 const AdminDashboard = () => {
   const [orders, setOrders] = useState([]);
   const [inventory, setInventory] = useState([]);
   const [view, setView] = useState('orders');  // State to toggle between 'orders' and 'inventory'
+
+  useEffect(() => {
+    const fetchInventoryData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/inventory/view');  // API call
+        setInventory(response.data);  // Assuming response.data contains inventory data
+        setLoading(false);  // Set loading to false once data is fetched
+        console.log(response.data);
+      } catch (err) {
+        console.error('Error fetching inventory data:', err);
+        // setError("Error fetching data");
+        // setLoading(false);
+      }
+    };
+    fetchInventoryData();
+  }, []);
 
   useEffect(() => {
     // Mock orders data
@@ -27,7 +44,7 @@ const AdminDashboard = () => {
     ];
 
     setOrders(mockOrders);
-    setInventory(mockInventory);
+    // setInventory(mockInventory);
   }, []);
 
   // Handle the dropdown change
@@ -155,18 +172,22 @@ const InventoryTable = ({ inventory }) => {
             <TableCell>Stock</TableCell>
             <TableCell>Status</TableCell>
             <TableCell>Delivery Date</TableCell>
+            <TableCell>Expiry Date</TableCell>
+            <TableCell>Bin</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {inventory.map((item) => (
             <TableRow key={item.id}>
               <TableCell>{item.id}</TableCell>
-              <TableCell>{item.itemName}</TableCell>
-              <TableCell>{item.stock}</TableCell>
+              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.quantity}</TableCell>
               <TableCell sx={{ color: getStatusColor(item.status), fontWeight: 'bold' }}>
                 {item.status}
               </TableCell>
-              <TableCell>{item.deliveryDate}</TableCell>
+              <TableCell>{item.dateReceived}</TableCell>
+              <TableCell>{item.expiryDate}</TableCell>
+              <TableCell>{item.tag}</TableCell>
             </TableRow>
           ))}
         </TableBody>

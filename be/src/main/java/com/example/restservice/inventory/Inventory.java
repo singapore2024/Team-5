@@ -30,6 +30,9 @@ public class Inventory {
     @Column(nullable = false)
     private Integer tag;
 
+    @Column(nullable = false)
+    private String status;
+
     public Long getId() {
         return id;
     }
@@ -86,13 +89,22 @@ public class Inventory {
         this.tag = tag;
     }
 
-    public Inventory(String name, String type, Integer quantity, LocalDate dateReceived, LocalDate expiryDate, Integer tag) {
+    public String getStatus(){
+        return status;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+    }
+
+    public Inventory(String name, String type, Integer quantity, LocalDate dateReceived, LocalDate expiryDate, Integer tag, String status) {
         this.name = name;
         this.type = type;
         this.quantity = quantity;
         this.dateReceived = dateReceived;
         this.expiryDate = expiryDate;
         this.tag = tag;
+        this.status = status;
     }
 
 }
