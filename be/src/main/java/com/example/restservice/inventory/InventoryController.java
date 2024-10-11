@@ -14,6 +14,11 @@ public class InventoryController {
     @Autowired
     private InventoryService inventoryService;
 
+    @GetMapping("/test")
+    public String test() {
+        return "Responsive";
+    }
+
     @GetMapping("/view")
     public List<Inventory> getInventory(){
         System.out.println("Retrieving inventory");
