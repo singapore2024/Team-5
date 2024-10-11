@@ -56,7 +56,7 @@ public class SecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authz -> authz
-                    .requestMatchers("/auth/register", "/auth/login", "/auth/test","/orders/test", "/orders/create", "/orders/testGet").permitAll()
+                    .requestMatchers("/auth/register", "/auth/login", "/auth/test","/orders/test", "/orders/create", "/orders/testGet", "/orders/edit").permitAll()
                     .anyRequest().authenticated()
             )
             .oauth2ResourceServer(oauth2 -> oauth2

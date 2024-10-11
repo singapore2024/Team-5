@@ -36,21 +36,20 @@ public class OrderController {
      */
     @PostMapping("/create")
     public ResponseEntity<String> createOrder(@RequestParam String email,
-                                              @RequestParam String description,
+                                              @RequestParam String name,
                                               @RequestParam Double price,
-                                              @RequestParam String status,
-                                              @RequestParam int quantity) {
+                                              @RequestParam int qty) {
         System.out.println("PARAM VALUES");
-        System.out.println(email);
+        System.out.println("");
         try {
             Order newOrder = new Order();
             newOrder.setEmail(email);
-            newOrder.setDescription(description);
+            newOrder.setDescription(name);
             newOrder.setPrice(price);
-            newOrder.setStatus(status);
+            newOrder.setStatus("Pending");
             newOrder.setDate(LocalDateTime.now());
-            newOrder.setDeliveryDate(LocalDateTime.now());
-            newOrder.setQuantity(quantity);
+            newOrder.setDeliveryDate(LocalDateTime.of(2024, 10, 11, 17, 0, 0));
+            newOrder.setQuantity(qty);
             orderRepository.save(newOrder);
             return ResponseEntity.ok("Order created successfully!");
         } catch (Exception e) {
@@ -93,6 +92,22 @@ public class OrderController {
             return ResponseEntity.ok("Orders with status '" + status + "' deleted successfully!");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error deleting orders: " + e.getMessage());
+        }
+    }
+    /**
+     * Deletes orders by their status.
+     *
+     * @param status The status of the orders to be deleted (e.g., "canceled").
+     * @return A message indicating the result of the delete operation.
+     */
+    @PostMapping("/edit")
+    public ResponseEntity<String> deleteOrdersByStatus(@RequestParam Long id,
+                                                       @RequestParam String status) {
+        try {
+            orderRepository.updateStatusById(id, status);
+            return ResponseEntity.ok("Orders with status '" + status + "' edited successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error editing orders: " + e.getMessage());
         }
     }
 }
