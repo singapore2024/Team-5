@@ -11,6 +11,7 @@ const AdminDashboard = () => {
   const [orders, setOrders] = useState([]);
   const [inventory, setInventory] = useState([]);
   const [view, setView] = useState('orders');  // State to toggle between 'orders' and 'inventory'
+  const [status, setStatus] = useState([]);
 
   useEffect(() => {
     const fetchInventoryData = async () => {
@@ -19,6 +20,7 @@ const AdminDashboard = () => {
         setInventory(response.data);  // Assuming response.data contains inventory data
         setLoading(false);  // Set loading to false once data is fetched
         console.log(response.data);
+        setStatus(response.data.status);
       } catch (err) {
         console.error('Error fetching inventory data:', err);
         // setError("Error fetching data");
@@ -50,6 +52,15 @@ const AdminDashboard = () => {
   // Handle the dropdown change
   const handleChange = (event) => {
     setView(event.target.value);  // Switch between 'orders' and 'inventory'
+  };
+
+  const handleStatusChange = (newStatus) => {
+    // Update the inventory state with the new status
+    setInventory((prevInventory) =>
+      prevInventory.map((item) =>
+        item.id === id ? { ...item, status: newStatus } : item
+      )
+    );
   };
 
   return (
@@ -124,7 +135,12 @@ const OrdersTable = ({ orders }) => {
               <TableCell>{order.customer}</TableCell>
               {/* Apply dynamic color to the status cell */}
               <TableCell sx={{ color: getStatusColor(order.status), fontWeight: 'bold' }}>
-                {order.status}
+                <select>
+                <option value="Fulfilled">Fulfilled</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="Pending">Pending</option>
+                </select>
+                {/* {order.status} */}
               </TableCell>
               <TableCell>{order.items}</TableCell>
               <TableCell>{order.orderDate}</TableCell>
