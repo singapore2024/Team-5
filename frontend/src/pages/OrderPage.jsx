@@ -101,9 +101,9 @@ export default function OrderPage() {
                   <input
                     type="number"
                     required="required"
-                    value={formData.qty}
+                    value={formData.quantity}
                     onChange={(e) =>
-                      updateFormData("qty", e.target.value)
+                      updateFormData("quantity", e.target.value)
                     }
                   />
                 </label>

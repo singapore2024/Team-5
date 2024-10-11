@@ -12,7 +12,7 @@ export const FormProvider = ({ children }) => {
     email: "",
     price: "",
     deliveryDateTime: "",
-    qty: "",
+    quantity: "",
   });
 
   const updateFormData = (key, value) => {
