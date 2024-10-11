@@ -4,7 +4,10 @@
  */
 package com.example.restservice.user;
 
+import com.example.restservice.schedule.Schedule;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "[jpuser]")
@@ -20,6 +23,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Schedule> schedules;
 
     public Long getId() {
         return id;
@@ -39,6 +44,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
     }
 
     public void setId(long l) {

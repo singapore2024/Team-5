@@ -3,8 +3,11 @@ import HomePage from './pages/HomePage';
 import OrderPage from './pages/OrderPage';
 import OrderSuccessPage from './pages/OrderSuccessPage';
 import AdminDashboard from './pages/AdminDashboard';  // Import the AdminDashboard
+import SchedulePage from "./pages/SchedulePage";
+import Menu from "./pages/Menu";
 import Navbar from './pages/navbar';  // Import Navbar
 import { FormProvider } from './utils/FormContext';  // Import FormProvider
+import "./App.css"; // Include your global styles
 
 function App() {
   return (
@@ -14,6 +17,7 @@ function App() {
         <Navbar>
           <Routes>
             {/* Define your routes here */}
+            <Route path="/dashboard" element={<Menu />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/order" element={<OrderPage />} />
