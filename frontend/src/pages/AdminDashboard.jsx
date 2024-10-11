@@ -37,6 +37,7 @@ const AdminDashboard = () => {
         const response = await axios.get('http://localhost:8080/orders/testGet'); 
         console.log(response.data);
         setOrd(response.data);
+        setOrders(response.data);
       } catch (err) {
         console.error('Error fetching inventory data:', err);
       }
@@ -155,7 +156,7 @@ const OrdersTable = ({ orders }) => {
                 {/* {order.status} */}
               </TableCell>
               <TableCell>{order.description}</TableCell>
-              <TableCell>{order.deliveryDate}</TableCell>
+              <TableCell>{new Date(order.deliveryDate).toISOString().split('T')[0]}</TableCell>
             </TableRow>
           ))}
         </TableBody>
