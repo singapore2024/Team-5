@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import OrderPage from './pages/OrderPage';
 import OrderSuccessPage from './pages/OrderSuccessPage';
 import AdminDashboard from './pages/AdminDashboard';  // Import the AdminDashboard
+import SchedulePage from "./pages/SchedulePage";
 import Menu from "./pages/Menu";
 import Navbar from './pages/navbar';  // Import Navbar
 import { FormProvider } from './utils/FormContext';  // Import FormProvider

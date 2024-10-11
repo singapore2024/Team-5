@@ -25,3 +25,17 @@ import axiosInstance from "./axios";
 export const getAllMenu = async () => {
     return axiosInstance.get('/menu/all');
 }
+
+export const getAllSchedules = async () => {
+    return axiosInstance.get('/schedule');
+}
+
+export const createSchedule = async (userId, date, slot, type, remarks) => {
+    return axiosInstance.post('/schedule', {
+        userId,
+        date,
+        slot,
+        type,
+        remarks
+    });
+}
