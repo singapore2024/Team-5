@@ -1,0 +1,22 @@
+.header-appbar {
+    background-color: #cd781e;
+}
+
+.header-toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-title {
+    font-weight: 1000;
+}
+
+.header-menu-icon {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .header-menu-icon {
+        display: block;
+    }
+}
