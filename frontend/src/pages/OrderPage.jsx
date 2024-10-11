@@ -80,8 +80,8 @@ export default function OrderPage() {
             <div className="justify-between">
               <label>Food Item</label>
               <select
-                value={formData.name}
-                onChange={(e) => updateFormData("name", e.target.value)}
+                value={formData.description}
+                onChange={(e) => updateFormData("description", e.target.value)}
                 required="required"
               >
                 <option value="" disabled>
