@@ -70,7 +70,7 @@ export default function OrderPage() {
               <input
                 type="text"
                 required="required"
-                placeholder="Please enter the exact food name here"
+                placeholder="Please enter your email"
                 value={formData.email}
                 onChange={(e) => updateFormData("email", e.target.value)}
               />
