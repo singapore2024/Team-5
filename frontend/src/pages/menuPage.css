@@ -1,0 +1,61 @@
+/* src/assets/css/menuPage.css */
+
+.menu-page {
+    padding: 20px;
+  }
+  
+  .search-bar {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .search-bar input {
+    padding: 8px;
+    font-size: 1em;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    justify-items: center;
+  }
+  
+  .food-card {
+    width: 100%;
+    max-width: 250px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .food-card.expanded {
+    background-color: #f8f8f8;
+  }
+  
+  .food-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .food-name {
+    font-weight: bold;
+  }
+  
+  .ingredients-list {
+    margin-top: 10px;
+    text-align: left;
+  }
+  
+  .ingredients-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
