@@ -44,14 +44,6 @@ public class OrderController {
         System.out.println("PARAM VALUES");
         System.out.println(order.getEmail());
         try {
-//            Order newOrder = new Order();
-//            newOrder.setEmail(email);
-//            newOrder.setDescription(name);
-//            newOrder.setPrice(price);
-//            newOrder.setStatus("Pending");
-//            newOrder.setDate(LocalDateTime.now());
-//            newOrder.setDeliveryDate(LocalDateTime.of(2024, 10, 11, 17, 0, 0));
-//            newOrder.setQuantity(qty);
             order.setStatus("Pending");
             order.setDate(LocalDateTime.now());
             order.setDeliveryDate(LocalDateTime.of(2024, 10, 11, 17, 0, 0));
@@ -106,11 +98,10 @@ public class OrderController {
      * @return A message indicating the result of the delete operation.
      */
     @PostMapping("/edit")
-    public ResponseEntity<String> deleteOrdersByStatus(@RequestParam Long id,
-                                                       @RequestParam String status) {
+    public ResponseEntity<String> deleteOrdersByStatus(@RequestBody Order order) {
         try {
-            orderRepository.updateStatusById(id, status);
-            return ResponseEntity.ok("Orders with status '" + status + "' edited successfully!");
+            orderRepository.updateStatusById(order.getId(), order.getStatus());
+            return ResponseEntity.ok("Orders with status '" + order.getStatus() + "' edited successfully!");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error editing orders: " + e.getMessage());
         }

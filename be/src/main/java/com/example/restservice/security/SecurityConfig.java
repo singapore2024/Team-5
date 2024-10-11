@@ -56,12 +56,7 @@ public class SecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(authz -> authz
-<<<<<<< HEAD
-                    .requestMatchers("/auth/register", "/auth/login", "/auth/test","/orders/test", "/orders/create", "/orders/testGet", "/orders/edit").permitAll()
-                    .anyRequest().authenticated()
-=======
                     .anyRequest().permitAll()
->>>>>>> origin/main
             )
             .oauth2ResourceServer(oauth2 -> oauth2
                     .jwt(jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(new JwtAuthenticationConverter()))
