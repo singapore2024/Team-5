@@ -9,7 +9,8 @@ interface FoodItem {
   id: string;
   name: string;
   ingredients: string[];
-  image: string;
+  image: null;
+  imagePreview: string;
 }
 
 const DUMMY_FOOD_ITEMS: FoodItem[] = [
@@ -17,31 +18,36 @@ const DUMMY_FOOD_ITEMS: FoodItem[] = [
     id: "1",
     name: "Nasi Lemak",
     ingredients: ["Rice", "Coconut Milk", "Anchovies", "Egg", "Peanuts"],
-    image: "/images/nasilemak.jpg",
+    image: null,
+    imagePreview: "nasilemak.jpg"
   },
   {
     id: "2",
     name: "Chicken Rice",
     ingredients: ["Chicken", "Rice", "Garlic", "Ginger", "Soy Sauce"],
-    image: "/images/chicken_rice.jpg",
+    image: null,
+    imagePreview: "/images/nasilemak.jpg"
   },
   {
     id: "3",
     name: "Pasta",
     ingredients: ["Pasta", "Tomato Sauce", "Parmesan", "Basil"],
-    image: "/images/pasta.jpg",
+    image: null,
+    imagePreview: "/images/nasilemak.jpg"
   },
   {
     id: "4",
     name: "Sushi",
     ingredients: ["Rice", "Seaweed", "Salmon", "Avocado"],
-    image: "/images/sushi.jpg",
+    image: null,
+    imagePreview: "/nasilemak.jpg"
   },
   {
     id: "5",
     name: "Salad",
     ingredients: ["Lettuce", "Tomato", "Cucumber", "Olives", "Feta Cheese"],
-    image: "/images/salad.jpg",
+    image: null,
+    imagePreview: "/images/nasilemak.jpg"
   },
 ];
 
@@ -54,7 +60,8 @@ const MenuPage: React.FC = () => {
     id: "",
     name: "",
     ingredients: [],
-    image: "",
+    image: null,
+    imagePreview: ""
   });
 
   const handleToggleExpand = (id: string) => {
@@ -76,7 +83,7 @@ const MenuPage: React.FC = () => {
     ]);
     // Close the modal and reset the new item state
     setIsModalOpen(false);
-    setNewItem({ id: "", name: "", ingredients: [], image: "" });
+    setNewItem({ id: "", name: "", ingredients: [], image: null, imagePreview:"" });
   };
 
   const handleChange = (field: keyof FoodItem, value: string | string[]) => {
@@ -110,10 +117,11 @@ const MenuPage: React.FC = () => {
         {filteredItems.map((food) => (
           <Card
             key={food.id}
+            //img={food.imagePreview}
             className={`food-card ${expandedItemId === food.id ? "expanded" : ""}`}
             onClick={() => handleToggleExpand(food.id)}
           >
-            <img src={food.image} alt={food.name} className="food-image" />
+            <img src={food.imagePreview} alt={food.name}  />
             <Typography variant="h6" className="food-name">
               {food.name}
             </Typography>
