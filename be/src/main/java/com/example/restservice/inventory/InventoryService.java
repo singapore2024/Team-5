@@ -15,10 +15,6 @@ public class InventoryService {
         return inventoryRepository.findAll();
     }
 
-    public Optional<Inventory> getInventoryById(Long id) {
-        return inventoryRepository.findById(id);
-    }
-
     public Inventory saveInventory(Inventory inventory) {
         return inventoryRepository.save(inventory);
     }

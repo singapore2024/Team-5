@@ -34,6 +34,10 @@ public class Inventory {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -79,6 +83,15 @@ public class Inventory {
     }
 
     public void setTag(Integer tag) {
+        this.tag = tag;
+    }
+
+    public Inventory(String name, String type, Integer quantity, LocalDate dateReceived, LocalDate expiryDate, Integer tag) {
+        this.name = name;
+        this.type = type;
+        this.quantity = quantity;
+        this.dateReceived = dateReceived;
+        this.expiryDate = expiryDate;
         this.tag = tag;
     }
 
